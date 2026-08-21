@@ -6,8 +6,8 @@ A responsive React application for organizing team tasks on a three-stage Kanban
 
 ## Links
 
-- **GitHub repository:** `https://github.com/USERNAME/REPOSITORY`
-- **Deployed application:** `https://USERNAME.github.io/REPOSITORY/`
+- **GitHub repository:** `https://github.com/Geordie-oG/Project1_Kanban-Board`
+- **Deployed application:** `https://geordie-og.github.io/Project1_Kanban-Board/` *(available after the tested `develop` branch is merged into `main`)*
 
 ## Features
 
