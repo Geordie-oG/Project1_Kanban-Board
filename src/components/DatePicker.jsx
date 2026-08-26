@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 function getToday() {
   const date = new Date()
@@ -20,10 +20,17 @@ function formatDate(date) {
 function DatePicker({ value, onChange, name, label, error }) {
   const [isOpen, setIsOpen] = useState(false)
   const [tempDate, setTempDate] = useState(value || '')
+  const triggerRef = useRef(null)
+  const inputRef = useRef(null)
+  const labelId = `${name}-label`
+  const valueId = `${name}-value`
+  const popupId = `${name}-picker`
+  const errorId = `${name}-error`
 
   function openPicker() {
     setTempDate(value || '')
     setIsOpen(true)
+    window.requestAnimationFrame(() => inputRef.current?.focus())
   }
 
   function handleConfirm() {
@@ -36,51 +43,79 @@ function DatePicker({ value, onChange, name, label, error }) {
       },
     })
 
-    setIsOpen(false)
+    closePicker()
   }
 
   function handleToday() {
     setTempDate(getToday())
   }
 
+  function closePicker() {
+    setIsOpen(false)
+    window.requestAnimationFrame(() => triggerRef.current?.focus())
+  }
+
   return (
-    <div className="date-picker">
-      <span>
-        {label} <b aria-hidden="true"></b>
+    <div
+      className="date-picker"
+      onKeyDown={(event) => {
+        if (isOpen && event.key === 'Escape') {
+          event.stopPropagation()
+          closePicker()
+        }
+      }}
+    >
+      <span id={labelId}>
+        {label} <b aria-hidden="true">*</b>
+        <span className="sr-only"> required</span>
       </span>
 
       <button
+        ref={triggerRef}
         type="button"
-        className={`date-picker__input ${error ? 'is-error' : ''}`}
+        className={`date-picker__input${error ? ' is-error' : ''}`}
         onClick={openPicker}
+        aria-labelledby={`${labelId} ${valueId}`}
+        aria-expanded={isOpen}
+        aria-controls={popupId}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : undefined}
       >
-        {value ? formatDate(value) : 'Select date'}
+        <span id={valueId}>{value ? formatDate(value) : 'Select date'}</span>
       </button>
 
       {error && (
-        <small className="field-error">
+        <small id={errorId} className="field-error" role="alert">
           {error}
         </small>
       )}
 
       {isOpen && (
-        <div className="date-picker__popup">
+        <div
+          id={popupId}
+          className="date-picker__popup"
+          role="group"
+          aria-labelledby={labelId}
+        >
           <div className="date-picker__header">
             <strong>{label}</strong>
 
             <button
               type="button"
               className="date-picker__close"
-              onClick={() => setIsOpen(false)}
+              onClick={closePicker}
+              aria-label={`Close ${label.toLowerCase()} picker`}
             >
               ×
             </button>
           </div>
 
           <input
+            ref={inputRef}
             type="date"
             value={tempDate}
             onChange={(event) => setTempDate(event.target.value)}
+            aria-label={`Choose ${label.toLowerCase()}`}
           />
 
           <div className="date-picker__actions">

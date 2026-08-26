@@ -1,8 +1,8 @@
-import { Plus, X } from 'lucide-react'
-import DatePicker from './DatePicker.jsx'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { Plus, X } from 'lucide-react'
 import { people } from '../data/people.js'
+import DatePicker from './DatePicker.jsx'
 
 const EMPTY_TASK = {
   title: '',
@@ -247,21 +247,21 @@ function TaskForm({ task, categories, onSubmit, onAddCategory, onClose }) {
             </select>
           </label>
 
-            <DatePicker
-              name="startDate"
-              label="Start date"
-              value={formData.startDate}
-              onChange={updateField}
-              error={errors.startDate}
-            />
+          <DatePicker
+            name="startDate"
+            label="Start date"
+            value={formData.startDate}
+            onChange={updateField}
+            error={errors.startDate}
+          />
 
-            <DatePicker
-              name="dueDate"
-              label="Due date"
-              value={formData.dueDate}
-              onChange={updateField}
-              error={errors.dueDate}
-            />
+          <DatePicker
+            name="dueDate"
+            label="Due date"
+            value={formData.dueDate}
+            onChange={updateField}
+            error={errors.dueDate}
+          />
 
           <footer className="task-form__actions">
             <button className="button button--ghost" type="button" onClick={onClose}>Cancel</button>
@@ -271,8 +271,7 @@ function TaskForm({ task, categories, onSubmit, onAddCategory, onClose }) {
           </footer>
         </form>
       </section>
-    </div>
-    ,
+    </div>,
     document.body,
   )
 }
