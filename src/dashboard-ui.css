@@ -1,0 +1,276 @@
+/* Dashboard UI contribution */
+
+.dashboard-page--refresh {
+    padding-bottom: 20px;
+  }
+  
+  .dashboard-hero--refresh {
+    min-height: 350px;
+  }
+  
+  .dashboard-hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .dashboard-hero__metrics {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  
+  .dashboard-hero__metrics > div {
+    display: flex;
+    min-width: 105px;
+    flex-direction: column;
+    padding: 11px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 13px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .dashboard-hero__metrics strong {
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  
+  .dashboard-hero__metrics span {
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  
+  .dashboard-hero__metrics .metric-alert {
+    background: rgba(215, 132, 106, 0.14);
+    border-color: rgba(236, 171, 150, 0.24);
+  }
+  
+  .progress-orbit--refresh {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+  }
+  
+  .progress-orbit__caption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  
+  .progress-orbit__caption > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .progress-orbit__caption strong {
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 11px;
+  }
+  
+  .progress-orbit__caption span:last-child {
+    margin-top: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 9px;
+  }
+  
+  .dashboard-summary {
+    padding-top: 38px;
+  }
+  
+  .dashboard-summary .summary-card {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+  
+  .dashboard-summary .summary-card:hover {
+    border-color: #d8dbd2;
+    box-shadow: 0 14px 30px rgba(43, 50, 44, 0.08);
+    transform: translateY(-3px);
+  }
+  
+  .analytics-section {
+    padding-top: 34px;
+  }
+  
+  .analytics-heading {
+    margin-bottom: 18px;
+  }
+  
+  .dashboard-charts--refresh {
+    gap: 18px;
+    padding-top: 0;
+  }
+  
+  .dashboard-charts--refresh .chart-card {
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+  
+  .dashboard-charts--refresh .chart-card:hover {
+    border-color: #d9dcd4;
+    box-shadow: 0 14px 32px rgba(44, 51, 45, 0.075);
+    transform: translateY(-2px);
+  }
+  
+  .dashboard-charts--refresh .chart-card__header {
+    padding-bottom: 13px;
+    border-bottom: 1px solid #ecece7;
+  }
+  
+  @media (max-width: 860px) {
+    .dashboard-hero__metrics {
+      flex-wrap: wrap;
+    }
+  
+    .dashboard-hero__metrics > div {
+      min-width: 95px;
+    }
+  
+    .progress-orbit--refresh {
+      padding: 18px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .dashboard-hero--refresh {
+      min-height: 0;
+    }
+
+    .progress-orbit__caption {
+      max-width: 155px;
+      margin-top: 0;
+      line-height: 1.5;
+    }
+  }
+  
+  @media (max-width: 680px) {
+    .dashboard-hero__metrics {
+      margin-top: 22px;
+    }
+
+    .dashboard-summary {
+      padding-top: 25px;
+    }
+  
+    .dashboard-hero__metrics > div {
+      flex: 1;
+      min-width: 82px;
+      padding: 10px;
+    }
+  
+    .dashboard-hero__metrics strong {
+      font-size: 19px;
+    }
+  
+    .progress-orbit--refresh {
+      margin-top: 26px;
+    }
+
+    .progress-orbit__caption {
+      max-width: 125px;
+      margin-top: 0;
+    }
+  
+    .analytics-section {
+      padding-top: 26px;
+    }
+  
+    .dashboard-charts--refresh {
+      gap: 13px;
+    }
+
+  }
+
+/* Enhanced dashboard summary cards */
+
+.summary-card--enhanced {
+    position: relative;
+    overflow: hidden;
+    min-height: 178px;
+    padding: 20px;
+  }
+  
+  .summary-card__accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: var(--card-tone);
+    opacity: 0.5;
+  }
+  
+  .summary-card--enhanced .summary-card__topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .summary-card--enhanced .summary-card__icon {
+    width: 38px;
+    height: 38px;
+    transition: transform 180ms ease;
+  }
+  
+  .summary-card--enhanced:hover .summary-card__icon {
+    transform: scale(1.08);
+  }
+  
+  .summary-card__status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--card-tone);
+    opacity: 0.45;
+  }
+  
+  .summary-card__body {
+    margin-top: 18px;
+  }
+  
+  .summary-card__label {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  
+  .summary-card--enhanced .summary-card__value {
+    display: block;
+    margin-top: 5px;
+    font-size: 34px;
+    line-height: 1;
+  }
+  
+  .summary-card__footer-info {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(50, 58, 52, 0.08);
+  }
+  
+  .summary-card__footer-info small {
+    display: block;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 680px) {
+    .summary-card--enhanced {
+      min-height: 145px;
+      padding: 15px;
+    }
+  }
