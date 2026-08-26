@@ -95,7 +95,7 @@ function KanbanPage() {
             <Sparkles size={14} aria-hidden="true" />
             Your shared flow
           </span>
-          <h1>Where good work<br />finds its rhythm.</h1>
+          <h1>Kanban Board</h1>
           <p>
             Plan clearly, move intentionally, and keep every handoff visible to the team.
           </p>

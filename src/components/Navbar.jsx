@@ -18,14 +18,14 @@ function Navbar() {
   return (
     <header className="topbar">
       <div className="topbar__inner">
-        <NavLink className="brand" to="/kanban" aria-label="Flowboard home">
+        <NavLink className="brand" to="/kanban" aria-label="Kanban Board home">
           <span className="brand__mark" aria-hidden="true">
             <span />
             <span />
             <span />
           </span>
           <span className="brand__copy">
-            <strong>flowboard</strong>
+            <strong>Kanban Board</strong>
             <small>team workspace</small>
           </span>
         </NavLink>
@@ -49,9 +49,6 @@ function Navbar() {
           <div className="today-chip">
             <CalendarDays size={16} aria-hidden="true" />
             <span>{formatToday()}</span>
-          </div>
-          <div className="team-avatar" aria-label="Team workspace">
-            FB
           </div>
         </div>
       </div>

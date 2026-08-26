@@ -1,5 +1,7 @@
 import { Plus, X } from 'lucide-react'
+import DatePicker from './DatePicker.jsx'
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { people } from '../data/people.js'
 
 const EMPTY_TASK = {
@@ -117,7 +119,7 @@ function TaskForm({ task, categories, onSubmit, onAddCategory, onClose }) {
     setErrors((current) => ({ ...current, category: '' }))
   }
 
-  return (
+  return createPortal(
     <div
       className="modal-backdrop"
       role="presentation"
@@ -245,35 +247,21 @@ function TaskForm({ task, categories, onSubmit, onAddCategory, onClose }) {
             </select>
           </label>
 
-          <label className="form-field">
-            <span>Start date <b aria-hidden="true">*</b></span>
-            <input
-              type="date"
+            <DatePicker
               name="startDate"
+              label="Start date"
               value={formData.startDate}
               onChange={updateField}
-              required
-              aria-required="true"
-              aria-invalid={Boolean(errors.startDate)}
-              aria-describedby={errors.startDate ? 'start-date-error' : undefined}
+              error={errors.startDate}
             />
-            {errors.startDate && <small id="start-date-error" className="field-error">{errors.startDate}</small>}
-          </label>
 
-          <label className="form-field">
-            <span>Due date <b aria-hidden="true">*</b></span>
-            <input
-              type="date"
+            <DatePicker
               name="dueDate"
+              label="Due date"
               value={formData.dueDate}
               onChange={updateField}
-              required
-              aria-required="true"
-              aria-invalid={Boolean(errors.dueDate)}
-              aria-describedby={errors.dueDate ? 'due-date-error' : undefined}
+              error={errors.dueDate}
             />
-            {errors.dueDate && <small id="due-date-error" className="field-error">{errors.dueDate}</small>}
-          </label>
 
           <footer className="task-form__actions">
             <button className="button button--ghost" type="button" onClick={onClose}>Cancel</button>
@@ -284,6 +272,8 @@ function TaskForm({ task, categories, onSubmit, onAddCategory, onClose }) {
         </form>
       </section>
     </div>
+    ,
+    document.body,
   )
 }
 
