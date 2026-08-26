@@ -74,13 +74,10 @@ function DashboardPage() {
             <Sparkles size={14} aria-hidden="true" />
             Live team overview
           </span>
-
           <h1>
-            Make progress
-            <br />
-            feel visible.
+            <span className="hero-title-line">Make progress</span>{' '}
+            <span className="hero-title-line">feel visible.</span>
           </h1>
-
           <p>
             Track the team’s workload, completed tasks, overdue work and
             performance from one clear dashboard.

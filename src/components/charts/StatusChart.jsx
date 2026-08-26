@@ -40,8 +40,8 @@ function StatusChart({ tasks }) {
               nameKey="name"
               cx="50%"
               cy="50%"
-              innerRadius={67}
-              outerRadius={91}
+              innerRadius="57%"
+              outerRadius="78%"
               paddingAngle={4}
               cornerRadius={7}
               stroke="none"
