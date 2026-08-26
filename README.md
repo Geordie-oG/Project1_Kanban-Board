@@ -1,4 +1,4 @@
-# Flowboard — Kanban Board with Dashboard
+# Kanban Board with Dashboard
 
 A responsive React application for organizing team tasks on a three-stage Kanban board and reviewing progress through a visual dashboard. Tasks and custom categories are stored entirely in the browser, so the application requires no backend and keeps its data after a page refresh.
 

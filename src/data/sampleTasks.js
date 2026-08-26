@@ -57,7 +57,7 @@ export function createSampleTasks() {
       startDate: dateFromToday(-5),
       dueDate: dateFromToday(-2),
       completeDate: '',
-      responsiblePersonId: 'person-4',
+      responsiblePersonId: 'person-3',
       status: 'DOING',
     },
     {
