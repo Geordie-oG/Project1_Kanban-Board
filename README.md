@@ -1,240 +1,154 @@
 # Kanban Board with Dashboard
 
-A responsive React application for organizing team tasks on a three-stage Kanban board and reviewing progress through a visual dashboard. Tasks and custom categories are stored entirely in the browser, so the application requires no backend and keeps its data after a page refresh.
+A responsive team-workflow application built with React. Plan work on a three-stage Kanban board, keep task details in one place, and turn the same live data into a visual progress dashboard—all without a backend or account.
 
-> **Before submission:** Replace the repository URL, deployed URL, member-name placeholders, and screenshot placeholders in this README.
+[**Live Demo**](https://geordie-og.github.io/Project1_Kanban-Board/) · [**Source Code**](https://github.com/Geordie-oG/Project1_Kanban-Board)
 
-## Links
+## Project Overview
 
-- **GitHub repository:** `https://github.com/Geordie-oG/Project1_Kanban-Board`
-- **Deployed application:** `https://geordie-og.github.io/Project1_Kanban-Board/` *(available after the tested `develop` branch is merged into `main`)*
+The application combines day-to-day task management with lightweight delivery analytics. Team members can create and assign tasks, move them from **TO DO** to **DOING** to **DONE**, and immediately see the effect on completion, workload, overdue, category, and performance metrics.
 
-## Features
-
-### Kanban Board
-
-- Three task columns: **TO DO**, **DOING**, and **DONE**
-- Create, edit, and delete tasks
-- Move tasks left or right through the workflow
-- Automatically record today's completion date when a task enters **DONE**
-- Clear the completion date when a task leaves **DONE**
-- Assign a category and responsible person to each task
-- Set task descriptions, start dates, and due dates
-- Add reusable custom categories
-- Search tasks by title or description and filter the board by category
-- Visually highlight overdue unfinished tasks
-- Show responsive empty states, task counts, and overall board progress
-
-### Dashboard
-
-- Five live summary cards for total, TO DO, DOING, DONE, and overdue tasks
-- Doughnut chart showing the task-status distribution
-- Bar chart showing tasks grouped by category
-- Completion-performance chart comparing early, on-time, and late work
-- Responsive layouts for desktop, tablet, and mobile screens
+Data is shared between both pages through React Context and saved to the browser's Local Storage. A first visit starts with realistic sample tasks, so the board and dashboard can be explored immediately.
 
 ## Screenshots
 
-Add the final screenshots to the paths below after the application has been integrated and deployed.
+### Kanban workspace
 
-| View | File to add |
-| --- | --- |
-| Kanban Board — desktop | `docs/screenshots/kanban-board.png` |
-| Dashboard — desktop | `docs/screenshots/dashboard.png` |
-| Responsive mobile view | `docs/screenshots/mobile-view.png` |
+Create, filter, assign, edit, and move work across the complete three-stage workflow.
 
-Once the files are added, replace this note with the following Markdown:
+![Kanban Board desktop view](docs/screenshots/kanban-board.png)
 
-```md
-![Kanban Board](docs/screenshots/kanban-board.png)
-![Dashboard](docs/screenshots/dashboard.png)
-![Mobile view](docs/screenshots/mobile-view.png)
-```
+### Live dashboard
+
+Review status totals, completion progress, delivery performance, and the category work mix.
+
+![Dashboard desktop view](docs/screenshots/dashboard.png)
+
+### Responsive mobile board
+
+<p align="center">
+  <img src="docs/screenshots/mobile-view.png" alt="Responsive Kanban Board mobile view" width="360">
+</p>
+
+## Highlights
+
+### Kanban Board
+
+- Create, edit, and delete tasks with a confirmation step for destructive actions
+- Move work forward or backward through **TO DO**, **DOING**, and **DONE**
+- Record completion dates automatically when work enters **DONE**
+- Assign a responsible person, category, description, start date, and due date
+- Add reusable custom categories directly from the task form
+- Search titles and descriptions, filter by category, and see the visible task count
+- Highlight overdue unfinished work and show overall completion progress
+
+### Dashboard
+
+- Live totals for all tasks, TO DO, DOING, DONE, and overdue work
+- Doughnut chart for status distribution
+- Category chart for the team's work mix
+- Performance chart comparing early, on-time, and late completions
+- Metrics derived from the same task state as the Kanban board
+
+### User Experience
+
+- Responsive desktop, tablet, and mobile layouts
+- Keyboard-accessible navigation, dialogs, task movement, and focus states
+- Accessible labels, live movement announcements, and reduced-motion support
+- Useful empty states and seven ready-to-use demonstration tasks on first launch
 
 ## Tech Stack
 
-- React 19
-- Vite 8
-- React Router 7 with hash-based routing
-- Recharts 3
-- Lucide React icons
-- Custom responsive CSS
-- Browser Local Storage
-- GitHub Actions and GitHub Pages
+| Area | Technology |
+| --- | --- |
+| Interface | React 19, custom CSS |
+| Build tooling | Vite 8 |
+| Routing | React Router 7 with hash-based routes |
+| Charts | Recharts 3 |
+| Icons | Lucide React |
+| State and persistence | React Context, Browser Local Storage |
+| Quality checks | Node.js test runner, ESLint |
+| Delivery | GitHub Actions, GitHub Pages |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js `>=20.19.0`
+- Node.js `20.19.0` or newer
 - npm
+
+No backend, database, environment variables, or external services are required.
 
 ### Run locally
 
 ```bash
-git clone YOUR_REPOSITORY_URL
-cd YOUR_REPOSITORY_FOLDER
+git clone https://github.com/Geordie-oG/Project1_Kanban-Board.git
+cd Project1_Kanban-Board
 npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite in your browser.
+Open the URL printed by Vite. The application routes are:
 
-### Create a production build
+- `#/kanban` — task board
+- `#/dashboard` — progress dashboard
 
-```bash
-npm run build
-npm run preview
-```
+### Available scripts
 
-### Run quality checks
-
-```bash
-npm test
-npm run lint
-```
-
-## Basic Usage
-
-1. Open **Kanban Board** from the navigation bar.
-2. Select **New Task** and enter the required task information.
-3. Choose an existing category, or add a category for future tasks.
-4. Use a task card's controls to edit, delete, or move the task.
-5. Move a completed task into **DONE** to record its completion date.
-6. Use the search box or category filter to focus the board.
-7. Open **Dashboard** to review status, category, overdue, and completion metrics.
-
-## Data Model and Persistence
-
-The app has no backend. Its shared task context reads from Local Storage when the application starts and writes changes after task or category updates. On a first visit, the app loads demonstration tasks and categories from `src/data/sampleTasks.js`; subsequent visits use the saved browser data.
-
-| Local Storage key | Stored value |
+| Command | Purpose |
 | --- | --- |
-| `kanban_tasks_v1` | Array of task objects |
-| `kanban_categories_v1` | Array of reusable categories |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create an optimized production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm test` | Run calculation and data-hydration unit tests |
+| `npm run lint` | Check the project with ESLint |
 
-A task contains the following fields:
+## How It Works
 
-```js
-{
-  id: "unique-id",
-  title: "Task title",
-  description: "Task description",
-  category: "Category name",
-  startDate: "YYYY-MM-DD",
-  dueDate: "YYYY-MM-DD",
-  completeDate: "YYYY-MM-DD", // empty until completed
-  responsiblePersonId: "person-id",
-  status: "TODO" // TODO | DOING | DONE
-}
-```
-
-Removing the two keys above from browser storage resets locally saved task and category data for that browser and site.
-
-The responsible-person list currently contains demonstration entries in `src/data/people.js`. Replace them with the names and IDs supplied by the instructor before final submission; person management is intentionally not part of the app.
-
-## Dashboard Calculations
-
-The dashboard derives every value from the current `tasks` array:
-
-| Metric | Calculation |
-| --- | --- |
-| Total | All tasks |
-| TO DO | Tasks whose status is `TODO` |
-| DOING | Tasks whose status is `DOING` |
-| DONE | Tasks whose status is `DONE` |
-| Overdue | Due date is before today and status is not `DONE` |
-| Early | Completion date is before the due date |
-| On Time | Completion date equals the due date |
-| Late | Completion date is after the due date |
-
-Only completed tasks with both a due date and completion date are included in completion-performance totals. Dates use the `YYYY-MM-DD` format so day-level comparisons remain consistent.
-
-## Application Structure
+`TaskProvider` is the application's single source of truth for tasks and categories. Both routes consume that shared state:
 
 ```text
-.
-├── .github/workflows/deploy.yml
-├── src/
-│   ├── components/
-│   │   ├── charts/
-│   │   │   ├── CategoryChart.jsx
-│   │   │   ├── ChartEmptyState.jsx
-│   │   │   ├── PerformanceChart.jsx
-│   │   │   └── StatusChart.jsx
-│   │   ├── ChartCard.jsx
-│   │   ├── KanbanColumn.jsx
-│   │   ├── Navbar.jsx
-│   │   ├── SummaryCard.jsx
-│   │   ├── TaskCard.jsx
-│   │   └── TaskForm.jsx
-│   ├── context/
-│   │   ├── taskContext.js
-│   │   ├── TaskContext.jsx
-│   │   └── useTasks.js
-│   ├── data/
-│   │   ├── people.js
-│   │   └── sampleTasks.js
-│   ├── pages/
-│   │   ├── DashboardPage.jsx
-│   │   └── KanbanPage.jsx
-│   ├── utils/
-│   │   ├── storage.js
-│   │   ├── taskHydration.js
-│   │   └── taskCalculations.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── styles.css
-├── tests/
-│   ├── taskCalculations.test.js
-│   └── taskHydration.test.js
-├── index.html
-├── package.json
-└── vite.config.js
+Kanban Board ──> Task Context <──> Local Storage
+                       │
+                       └──> Dashboard calculations ──> Summary cards and charts
 ```
 
-`main.jsx` wraps the app in `HashRouter` and `TaskProvider`. The shared task context owns tasks, categories, CRUD operations, movement, and persistence. Both pages consume that same state, while pure calculation helpers transform it into dashboard totals and chart data.
+- **Task lifecycle:** CRUD and movement operations update the shared task array. Moving a task into **DONE** records today's date; moving it out clears that completion date.
+- **Persistence:** Tasks and categories are restored at startup and saved after every change. Stored values are normalized before reaching the interface.
+- **Analytics:** Pure calculation helpers derive totals and chart data from the current tasks. Overdue work is unfinished work whose due date has passed.
+- **Sample state:** New visitors receive seven tasks across all statuses, categories, and completion outcomes so every main feature has meaningful data.
 
-## Branch Workflow
+Local data is stored under these keys:
 
-| Work area | Branch |
+| Key | Value |
 | --- | --- |
-| Kanban Board | `feature/kanban-board` |
-| Task and data management | `feature/task-management` |
-| Dashboard and delivery | `feature/dashboard` |
+| `kanban_tasks_v1` | Task records |
+| `kanban_categories_v1` | Reusable category names |
 
-Each feature branch is reviewed and merged into `develop`. After integration and acceptance testing, `develop` is merged into `main`; a push to `main` triggers the GitHub Pages deployment workflow.
+Remove both keys from the site's Local Storage to reset the application to its demonstration data.
 
-## Deployment
+## Project Structure
 
-The workflow at `.github/workflows/deploy.yml` installs locked dependencies, runs the automated tests and linter, builds the app, uploads `dist`, and deploys it to GitHub Pages.
+```text
+src/
+├── components/       Reusable board, form, card, navigation, and chart UI
+├── context/          Shared task state, CRUD actions, and persistence effects
+├── data/             Sample tasks, categories, and team members
+├── pages/            Kanban and dashboard routes
+├── utils/            Storage, hydration, and analytics helpers
+├── App.jsx            Route layout and focus management
+├── dashboard-ui.css   Dashboard-specific responsive styling
+└── styles.css         Shared design system and board styling
+```
 
-To enable deployment for the repository:
+The dashboard route is lazy-loaded. `HashRouter` and relative Vite asset paths keep both routes refresh-safe when the project is hosted below a GitHub Pages repository path.
 
-1. Open **Settings → Pages** in GitHub.
-2. Set **Source** to **GitHub Actions**.
-3. Push or merge the tested application into `main`.
-4. Check the **Actions** tab, then test both application routes on the deployed URL.
+## Testing and Deployment
 
-The Vite build uses relative asset paths (`base: './'`) and the app uses `HashRouter`, so a repository-specific GitHub Pages base path does not need to be hard-coded. The deployed routes appear as `#/kanban` and `#/dashboard`, which also remain available after a browser refresh.
-
-## Final Acceptance Checklist
-
-- [ ] Task creation, editing, and deletion work correctly
-- [ ] Tasks move correctly between all three statuses
-- [ ] Entering and leaving DONE updates the completion date correctly
-- [ ] Categories can be added, selected, and restored after refresh
-- [ ] Tasks are restored from Local Storage after refresh
-- [ ] All five dashboard totals match the board data
-- [ ] Status, category, and completion charts update from real task data
-- [ ] Overdue styling and totals follow the agreed definition
-- [ ] Kanban and Dashboard pages work on desktop and mobile
-- [ ] Direct navigation and refresh work on the deployed site
-- [ ] Final screenshots, names, repository URL, and deployed URL are present
-- [ ] No generated build artifacts are committed
+The unit suite covers status normalization, task totals, overdue rules, chart calculations, category handling, and stored-data hydration. Every push to `main` runs the tests and linter, creates the production build, and deploys `dist/` through GitHub Actions to [GitHub Pages](https://geordie-og.github.io/Project1_Kanban-Board/).
 
 ## Team Members
 
-- `[Member A Name]`
-- `[Member B Name]`
-- `[Member C Name]`
+- Lihout Van
+- Ye Htet Aung
+- Zaw Zaw Naing

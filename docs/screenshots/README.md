@@ -1,9 +1,9 @@
-# Screenshot checklist
+# Screenshot assets
 
-Add the final images here after all three feature branches are integrated:
+These images are embedded in the repository's main README:
 
-- `kanban-board.png` — desktop Kanban Board
-- `dashboard.png` — desktop Dashboard
-- `mobile-view.png` — responsive mobile view
+- `kanban-board.png` — full desktop Kanban workspace
+- `dashboard.png` — full desktop analytics dashboard
+- `mobile-view.png` — responsive mobile Kanban overview
 
-Capture the deployed application with realistic task data and no open dialogs.
+The screenshots use the application's demonstration data and contain no open dialogs or browser controls.
